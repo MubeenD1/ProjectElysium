@@ -1,6 +1,165 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <p>Hi!</p>
-  </head>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Project Elysium — Zenith Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+    <div class="orb orb4"></div>
+    <div class="orb orb5"></div>
+    <div class="orb orb6"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="scanline" aria-hidden="true"></div>
+
+  <nav id="nav">
+    <a href="/" class="logo">
+      <div class="logo-mark">
+        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="2.5" y1="2.5" x2="12.5" y2="2.5"/>
+          <line x1="12.5" y1="2.5" x2="2.5" y2="12.5"/>
+          <line x1="2.5" y1="12.5" x2="12.5" y2="12.5"/>
+        </svg>
+      </div>
+      Zenith Systems
+    </a>
+    <div class="nav-right">Project Elysium</div>
+  </nav>
+
+  <section class="hero">
+    <p class="hero-eyebrow">Zenith Systems — Flagship Initiative</p>
+    <h1 class="hero-title">ELYSIUM</h1>
+    <p class="hero-tagline">[ Placeholder tagline ]</p>
+    <div class="hero-bottom">
+      <span class="hero-coord">[ 00.0000°N  00.0000°E ]</span>
+      <div class="hero-scroll">
+        <span>Explore</span>
+        <div class="scroll-bar"></div>
+      </div>
+      <span class="hero-year">Est. [ YEAR ]</span>
+    </div>
+  </section>
+
+  <section class="s-vision section-wrap glass">
+    <div class="vision-inner reveal">
+      <div class="section-label">01 — Vision</div>
+      <p class="vision-text">
+        <span class="dim">[ Opening manifesto. What is Elysium, in one sweeping statement? Make it feel </span><span class="hi">inevitable</span><span class="dim">. 1–2 sentences. ]</span>
+      </p>
+    </div>
+  </section>
+
+  <section class="s-pillars section-wrap glass">
+    <div class="pillars-header reveal">
+      <div class="section-label">02 — Foundations</div>
+      <span class="pillars-count">[ 03 ] Core Principles</span>
+    </div>
+    <div class="pillars-grid">
+      <div class="pillar">
+        <span class="pillar-num">01</span>
+        <h3 class="pillar-title">[ Pillar One Title ]</h3>
+        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">02</span>
+        <h3 class="pillar-title">[ Pillar Two Title ]</h3>
+        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
+      </div>
+      <div class="pillar">
+        <span class="pillar-num">03</span>
+        <h3 class="pillar-title">[ Pillar Three Title ]</h3>
+        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="s-close section-wrap glass">
+    <p class="close-eyebrow reveal">03 — Purpose</p>
+    <h2 class="close-title reveal">[ Closing headline ]</h2>
+    <p class="close-body reveal">[ 2–3 sentences. The emotional close. ]</p>
+  </section>
+
+  <div class="s-data">
+    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
+    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
+    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
+    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
+  </div>
+
+  <footer>
+    <div class="footer-brand">Zenith Systems</div>
+    <ul class="footer-links">
+      <li><a href="#">Privacy</a></li>
+      <li><a href="#">Contact</a></li>
+      <li><a href="#">Careers</a></li>
+    </ul>
+    <div class="footer-copy">© 2025 Zenith Systems. All rights reserved.</div>
+  </footer>
+
+  <script>
+    // NAV
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 60);
+    }, { passive: true });
+
+    // STARFIELD
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+
+    const STAR_COUNT = 280;
+    const stars = Array.from({ length: STAR_COUNT }, () => ({
+      x:      Math.random(),
+      y:      Math.random(),
+      r:      Math.random() * 1.2 + 0.2,
+      phase:  Math.random() * Math.PI * 2,
+      speed:  0.0003 + Math.random() * 0.0006,
+      bright: 0.4 + Math.random() * 0.6,
+    }));
+
+    function drawStars(ts) {
+      const W = canvas.width;
+      const H = canvas.height;
+      ctx.clearRect(0, 0, W, H);
+      stars.forEach(s => {
+        const flicker = s.bright * (0.55 + 0.45 * Math.sin(ts * s.speed + s.phase));
+        ctx.beginPath();
+        ctx.arc(s.x * W, s.y * H, s.r, 0, Math.PI * 2);
+        const g = s.bright > 0.85 ? 255 : 220;
+        ctx.fillStyle = `rgba(200, ${g}, 210, ${flicker})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    requestAnimationFrame(drawStars);
+
+    // SCROLL REVEAL
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e, i) => {
+        if (e.isIntersecting) {
+          setTimeout(() => e.target.classList.add('visible'), i * 110);
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal, .pillar, .data-item').forEach(el => io.observe(el));
+  </script>
+</body>
 </html>
