@@ -33,11 +33,11 @@
       <p class="login-sub">Restricted access. Authorised personnel only.</p>
       <div class="field">
         <label>Username</label>
-        <input type="text" id="username" placeholder="e.g. e.larkin" autocomplete="off" spellcheck="false"/>
+        <input type="text" id="username" placeholder="Username" autocomplete="off" spellcheck="false"/>
       </div>
       <div class="field">
         <label>Access Key</label>
-        <input type="password" id="password" placeholder="••••••••"/>
+        <input type="password" id="password" placeholder="Password"/>
       </div>
       <button class="login-btn" onclick="attemptLogin()">Authenticate</button>
       <div class="login-error" id="loginError">Invalid credentials. Access denied.</div>
@@ -139,54 +139,10 @@
           Active partners: <span>27</span>
         </div>
 
-        <!-- Simple SVG world map with dot markers -->
+        <!-- amCharts world map -->
         <div class="map-wrap">
           <div class="card-label" style="margin-bottom:1rem;">Partner Distribution — Global Overview</div>
-          <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="opacity:0.7;">
-            <!-- Simplified world landmass outlines -->
-            <!-- North America -->
-            <path d="M80,80 L180,70 L220,90 L230,140 L210,180 L190,220 L160,240 L140,220 L120,200 L90,170 L70,130 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <!-- South America -->
-            <path d="M170,260 L210,250 L230,280 L225,340 L210,380 L190,400 L170,390 L155,360 L150,320 L155,280 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <!-- Europe -->
-            <path d="M430,60 L490,55 L510,70 L510,100 L490,110 L470,105 L450,115 L430,110 L420,90 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <!-- Africa -->
-            <path d="M440,130 L490,125 L520,140 L530,190 L520,250 L500,290 L475,300 L450,285 L435,240 L430,190 L435,150 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <!-- Asia -->
-            <path d="M520,50 L680,45 L730,70 L740,110 L720,140 L680,150 L640,145 L600,155 L560,145 L530,130 L510,100 L515,70 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <!-- Southeast Asia / Oceania -->
-            <path d="M700,180 L760,175 L780,200 L770,230 L740,235 L710,220 L695,200 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-            <path d="M760,280 L820,275 L840,300 L835,330 L810,340 L780,330 L760,310 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
-
-            <!-- Tier 1 partners — bright green dots -->
-            <circle cx="150" cy="130" r="5" fill="#4ead78" opacity="0.9"/>
-            <circle cx="470" cy="80"  r="5" fill="#4ead78" opacity="0.9"/>
-            <circle cx="600" cy="90"  r="5" fill="#4ead78" opacity="0.9"/>
-            <circle cx="650" cy="100" r="5" fill="#4ead78" opacity="0.9"/>
-            <circle cx="490" cy="155" r="5" fill="#4ead78" opacity="0.9"/>
-
-            <!-- Tier 2 partners — amber dots -->
-            <circle cx="110" cy="150" r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="190" cy="270" r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="450" cy="85"  r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="530" cy="75"  r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="680" cy="85"  r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="720" cy="120" r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="460" cy="200" r="4" fill="#c4ae52" opacity="0.8"/>
-            <circle cx="750" cy="200" r="4" fill="#c4ae52" opacity="0.8"/>
-
-            <!-- Tier 3 partners — dim dots -->
-            <circle cx="170" cy="110" r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="200" cy="300" r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="480" cy="70"  r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="560" cy="80"  r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="620" cy="110" r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="700" cy="95"  r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="470" cy="240" r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="510" cy="210" r="3" fill="#3d5447" opacity="0.9"/>
-            <circle cx="790" cy="300" r="3" fill="#3d5447" opacity="0.9"/>
-          </svg>
-          <!-- Legend -->
+          <div id="chartdiv" style="width:100%;height:420px;"></div>
           <div style="display:flex;gap:2rem;margin-top:1rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">
             <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ead78;margin-right:0.4rem;vertical-align:middle;"></span>Tier 1</span>
             <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c4ae52;margin-right:0.4rem;vertical-align:middle;"></span>Tier 2</span>
@@ -411,6 +367,184 @@
       requestAnimationFrame(drawStars);
     }
     requestAnimationFrame(drawStars);
+  </script>
+
+  <!-- amCharts -->
+  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/map.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
+  <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
+  <script>
+    // Partner data — replace country IDs and tiers as needed
+    // Full ISO 3166-1 alpha-2 country codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
+    const partnerData = [
+      // Tier 1 — full resident feed
+      { id: "US", name: "United States",    tier: 1 },
+      { id: "GB", name: "United Kingdom",   tier: 1 },
+      { id: "CN", name: "China",            tier: 1 },
+      { id: "DE", name: "Germany",          tier: 1 },
+      { id: "IN", name: "India",            tier: 1 },
+      // Tier 2 — behavioural index
+      { id: "FR", name: "France",           tier: 2 },
+      { id: "BR", name: "Brazil",           tier: 2 },
+      { id: "AU", name: "Australia",        tier: 2 },
+      { id: "JP", name: "Japan",            tier: 2 },
+      { id: "KR", name: "South Korea",      tier: 2 },
+      { id: "ZA", name: "South Africa",     tier: 2 },
+      { id: "CA", name: "Canada",           tier: 2 },
+      { id: "SG", name: "Singapore",        tier: 2 },
+      // Tier 3 — aggregated reports
+      { id: "MX", name: "Mexico",           tier: 3 },
+      { id: "NG", name: "Nigeria",          tier: 3 },
+      { id: "PK", name: "Pakistan",         tier: 3 },
+      { id: "EG", name: "Egypt",            tier: 3 },
+      { id: "AR", name: "Argentina",        tier: 3 },
+      { id: "SE", name: "Sweden",           tier: 3 },
+      { id: "NL", name: "Netherlands",      tier: 3 },
+      { id: "NO", name: "Norway",           tier: 3 },
+      { id: "TH", name: "Thailand",         tier: 3 },
+      { id: "PH", name: "Philippines",      tier: 3 },
+      { id: "ID", name: "Indonesia",        tier: 3 },
+      { id: "TR", name: "Turkey",           tier: 3 },
+      { id: "IL", name: "Israel",           tier: 3 },
+      { id: "AE", name: "UAE",              tier: 3 },
+    ];
+
+    const tierColors = {
+      1: 0x4ead78,
+      2: 0xc4ae52,
+      3: 0x3d5447,
+    };
+
+    const root = am5.Root.new("chartdiv");
+    root.setThemes([am5themes_Animated.new(root)]);
+    root.interfaceColors.set("text", am5.color(0xe8f2eb));
+
+    const chart = root.container.children.push(
+      am5map.MapChart.new(root, {
+        panX: "rotateX",
+        panY: "none",
+        projection: am5map.geoNaturalEarth1(),
+        background: am5.Rectangle.new(root, { fill: am5.color(0x06080a), fillOpacity: 0 }),
+      })
+    );
+
+    // Land polygons
+    const polygonSeries = chart.series.push(
+      am5map.MapPolygonSeries.new(root, {
+        geoJSON: am5geodata_worldLow,
+        exclude: ["AQ"],
+      })
+    );
+    polygonSeries.mapPolygons.template.setAll({
+      fill: am5.color(0x0d140f),
+      stroke: am5.color(0x1e5c3a),
+      strokeWidth: 0.5,
+      fillOpacity: 1,
+    });
+    polygonSeries.mapPolygons.template.states.create("hover", {
+      fill: am5.color(0x152a1c),
+    });
+
+    // Highlight partner countries
+    const highlightSeries = chart.series.push(
+      am5map.MapPolygonSeries.new(root, {
+        geoJSON: am5geodata_worldLow,
+        include: partnerData.map(p => p.id),
+      })
+    );
+    highlightSeries.mapPolygons.template.setAll({
+      strokeWidth: 0.5,
+      stroke: am5.color(0x1e5c3a),
+    });
+    highlightSeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
+      const id = target.dataItem?.get("id");
+      const partner = partnerData.find(p => p.id === id);
+      if (!partner) return fill;
+      const colors = { 1: 0x1a3d28, 2: 0x2e2a10, 3: 0x121f14 };
+      return am5.color(colors[partner.tier]);
+    });
+    highlightSeries.mapPolygons.template.adapters.add("stroke", (stroke, target) => {
+      const id = target.dataItem?.get("id");
+      const partner = partnerData.find(p => p.id === id);
+      if (!partner) return stroke;
+      return am5.color(tierColors[partner.tier]);
+    });
+
+    // Dot markers on each partner
+    const pointSeries = chart.series.push(
+      am5map.MapPointSeries.new(root, { polygonIdField: "country" })
+    );
+    pointSeries.bullets.push((root, series, dataItem) => {
+      const tier = dataItem.dataContext.tier;
+      const color = tierColors[tier];
+      const size = tier === 1 ? 7 : tier === 2 ? 5 : 4;
+      const tierLabels = { 1: "Tier 1 — Full resident feed, real-time", 2: "Tier 2 — Behavioural index, quarterly export", 3: "Tier 3 — Aggregated demographic report, annual" };
+
+      const circle = am5.Circle.new(root, {
+        radius: size,
+        fill: am5.color(color),
+        fillOpacity: tier === 1 ? 0.95 : tier === 2 ? 0.8 : 0.6,
+        stroke: am5.color(color),
+        strokeOpacity: 0.3,
+        strokeWidth: 4,
+        cursorOverStyle: "pointer",
+        tooltipText: `[bold]{name}[/]\n${tierLabels[tier]}`,
+        tooltip: am5.Tooltip.new(root, {
+          getFillFromSprite: false,
+          background: am5.Rectangle.new(root, {
+            fill: am5.color(0x0a100c),
+            fillOpacity: 0.95,
+            stroke: am5.color(color),
+            strokeOpacity: 0.4,
+            strokeWidth: 1,
+            cornerRadiusTL: 4, cornerRadiusTR: 4,
+            cornerRadiusBL: 4, cornerRadiusBR: 4,
+          }),
+        }),
+      });
+
+      // Pulse animation on tier 1 dots
+      if (tier === 1) {
+        circle.animate({
+          key: "strokeOpacity",
+          from: 0.5,
+          to: 0,
+          duration: 1500,
+          loops: Infinity,
+        });
+        circle.animate({
+          key: "strokeWidth",
+          from: 2,
+          to: 12,
+          duration: 1500,
+          loops: Infinity,
+        });
+      }
+
+    const tooltip = circle.get("tooltip");
+      tooltip.label.setAll({
+      fontSize: 11,
+      lineHeight: 1.6,
+    });
+    tooltip.label.states.create("default", {
+      fill: am5.color(0xe8f2eb),
+    });
+    tooltip.get("background").setAll({
+      fill: am5.color(0x0a100c),
+      fillOpacity: 0.95,
+      stroke: am5.color(color),
+      strokeOpacity: 0.4,
+      strokeWidth: 1,
+    });
+
+      return am5.Bullet.new(root, { sprite: circle });
+    });
+    pointSeries.data.setAll(
+      partnerData.map(p => ({ country: p.id, name: p.name, tier: p.tier }))
+    );
+
+    chart.appear(1000, 100);
   </script>
 
 </body>
