@@ -37,64 +37,41 @@
   </nav>
 
   <section class="hero">
-    <p class="hero-eyebrow">Zenith Systems — Flagship Initiative</p>
+    <p class="hero-eyebrow" id="eyebrow"></p>
     <h1 class="hero-title">ELYSIUM</h1>
-    <p class="hero-tagline">[ Placeholder tagline ]</p>
+    <p class="hero-tagline" id="tagline"></p>
     <div class="hero-bottom">
-      <span class="hero-coord">[ 00.0000°N  00.0000°E ]</span>
+      <span class="hero-coord" id="coords"></span>
       <div class="hero-scroll">
         <span>Explore</span>
         <div class="scroll-bar"></div>
       </div>
-      <span class="hero-year">Est. [ YEAR ]</span>
+      <span class="hero-year" id="year"></span>
     </div>
   </section>
 
   <section class="s-vision section-wrap glass">
     <div class="vision-inner reveal">
       <div class="section-label">01 — Vision</div>
-      <p class="vision-text">
-        <span class="dim">[ Opening manifesto. What is Elysium, in one sweeping statement? Make it feel </span><span class="hi">inevitable</span><span class="dim">. 1–2 sentences. ]</span>
-      </p>
+      <p class="vision-text" id="vision"></p>
     </div>
   </section>
 
   <section class="s-pillars section-wrap glass">
     <div class="pillars-header reveal">
       <div class="section-label">02 — Foundations</div>
-      <span class="pillars-count">[ 03 ] Core Principles</span>
+      <span class="pillars-count">03 Core Principles</span>
     </div>
-    <div class="pillars-grid">
-      <div class="pillar">
-        <span class="pillar-num">01</span>
-        <h3 class="pillar-title">[ Pillar One Title ]</h3>
-        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-num">02</span>
-        <h3 class="pillar-title">[ Pillar Two Title ]</h3>
-        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
-      </div>
-      <div class="pillar">
-        <span class="pillar-num">03</span>
-        <h3 class="pillar-title">[ Pillar Three Title ]</h3>
-        <p class="pillar-body">[ Short description. 2–3 sentences. ]</p>
-      </div>
-    </div>
+    <div class="pillars-grid" id="pillars"></div>
   </section>
 
   <section class="s-close section-wrap glass">
     <p class="close-eyebrow reveal">03 — Purpose</p>
-    <h2 class="close-title reveal">[ Closing headline ]</h2>
-    <p class="close-body reveal">[ 2–3 sentences. The emotional close. ]</p>
+    <h2 class="close-title reveal" id="closeHeadline"></h2>
+    <p class="close-body reveal" id="closeBody"></p>
   </section>
 
-  <div class="s-data">
-    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
-    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
-    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
-    <div class="data-item"><div class="data-num">[ <em>XX</em> ]</div><div class="data-label">[ Stat Label ]</div></div>
-  </div>
+  <div class="s-data" id="stats"></div>
 
   <footer>
     <div class="footer-brand">Zenith Systems</div>
@@ -103,17 +80,45 @@
       <li><a href="#">Contact</a></li>
       <li><a href="#">Careers</a></li>
     </ul>
-    <div class="footer-copy">© 2025 Zenith Systems. All rights reserved.</div>
+    <div class="footer-copy" id="footerCopy"></div>
   </footer>
 
+  <script src="./content.js"></script>
   <script>
-    // NAV
+    // ── FILL CONTENT ──
+    document.getElementById('eyebrow').textContent       = content.eyebrow;
+    document.getElementById('tagline').textContent       = content.tagline;
+    document.getElementById('coords').textContent        = content.coords;
+    document.getElementById('year').textContent          = content.year;
+    document.getElementById('vision').textContent        = content.vision;
+    document.getElementById('closeHeadline').textContent = content.closeHeadline;
+    document.getElementById('closeBody').textContent     = content.closeBody;
+    document.getElementById('footerCopy').textContent    = content.footerCopy;
+
+    // Pillars
+    document.getElementById('pillars').innerHTML = content.pillars.map((p, i) => `
+      <div class="pillar">
+        <span class="pillar-num">0${i + 1}</span>
+        <h3 class="pillar-title">${p.title}</h3>
+        <p class="pillar-body">${p.body}</p>
+      </div>
+    `).join('');
+
+    // Stats
+    document.getElementById('stats').innerHTML = content.stats.map(s => `
+      <div class="data-item">
+        <div class="data-num"><em>${s.num}</em></div>
+        <div class="data-label">${s.label}</div>
+      </div>
+    `).join('');
+
+    // ── NAV ──
     const nav = document.getElementById('nav');
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);
     }, { passive: true });
 
-    // STARFIELD
+    // ── STARFIELD ──
     const canvas = document.getElementById('stars');
     const ctx = canvas.getContext('2d');
 
@@ -150,7 +155,7 @@
     }
     requestAnimationFrame(drawStars);
 
-    // SCROLL REVEAL
+    // ── SCROLL REVEAL ──
     const io = new IntersectionObserver((entries) => {
       entries.forEach((e, i) => {
         if (e.isIntersecting) {
