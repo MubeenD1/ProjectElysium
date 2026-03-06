@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portal — Zenith Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <canvas id="stars"></canvas>
+  <div class="orbs" aria-hidden="true">
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+  </div>
+
+  <!-- ── LOGIN PAGE ── -->
+  <div id="login-page">
+    <div class="login-box">
+      <div class="login-logo">
+        <div class="login-logo-mark">
+          <svg width="14" height="14" viewBox="0 0 15 15" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="2.5" y1="2.5" x2="12.5" y2="2.5"/>
+            <line x1="12.5" y1="2.5" x2="2.5" y2="12.5"/>
+            <line x1="2.5" y1="12.5" x2="12.5" y2="12.5"/>
+          </svg>
+        </div>
+        <span class="login-logo-text">Zenith Systems</span>
+      </div>
+      <h1 class="login-title">Internal Portal</h1>
+      <p class="login-sub">Restricted access. Authorised personnel only.</p>
+      <div class="field">
+        <label>Username</label>
+        <input type="text" id="username" placeholder="e.g. e.larkin" autocomplete="off" spellcheck="false"/>
+      </div>
+      <div class="field">
+        <label>Access Key</label>
+        <input type="password" id="password" placeholder="••••••••"/>
+      </div>
+      <button class="login-btn" onclick="attemptLogin()">Authenticate</button>
+      <div class="login-error" id="loginError">Invalid credentials. Access denied.</div>
+    </div>
+  </div>
+
+  <!-- ── PORTAL PAGE ── -->
+  <div id="portal-page">
+
+    <nav class="portal-nav">
+      <div class="portal-nav-left">
+        <div class="logo-mark">
+          <svg width="13" height="13" viewBox="0 0 15 15" fill="none" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="2.5" y1="2.5" x2="12.5" y2="2.5"/>
+            <line x1="12.5" y1="2.5" x2="2.5" y2="12.5"/>
+            <line x1="2.5" y1="12.5" x2="12.5" y2="12.5"/>
+          </svg>
+        </div>
+        Zenith Systems
+      </div>
+      <div class="portal-nav-right">
+        <div class="portal-user">Logged in as <span>e.larkin</span></div>
+        <div class="portal-access">Clearance: Level 2</div>
+      </div>
+    </nav>
+
+    <div class="portal-tabs">
+      <button class="tab-btn active" onclick="switchTab('services')">Services</button>
+      <button class="tab-btn" onclick="switchTab('partners')">Partners</button>
+      <button class="tab-btn" onclick="switchTab('data')">Data Products</button>
+      <button class="tab-btn" onclick="switchTab('recruitment')">Recruitment</button>
+    </div>
+
+    <div class="portal-content">
+
+      <!-- SERVICES TAB -->
+      <div class="tab-panel active" id="tab-services">
+        <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
+        <h2 class="doc-title">Integrated City Services</h2>
+        <div class="doc-meta">
+          Document ref: <span>ZS-SVC-004</span> &nbsp;·&nbsp;
+          Classification: <span>Partner Confidential</span> &nbsp;·&nbsp;
+          Last updated: <span>[ DATE ]</span>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Overview</div>
+          <div class="card-body">
+            <p>[ 2–3 sentences describing Elysium's integrated services in clean corporate language. Frame it as smart city infrastructure. ]</p>
+          </div>
+        </div>
+
+        <div class="two-col">
+          <div class="card">
+            <div class="card-label">[ Service Category 1 ]</div>
+            <div class="card-title">[ Service Name ]</div>
+            <div class="card-body">
+              <p>[ Description. Sounds like urban efficiency tech. Actually describes passive surveillance of movement and behaviour. ]</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-label">[ Service Category 2 ]</div>
+            <div class="card-title">[ Service Name ]</div>
+            <div class="card-body">
+              <p>[ Description. Sounds like community wellness. Actually describes biometric data collection and profiling. ]</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-label">[ Service Category 3 ]</div>
+            <div class="card-title">[ Service Name ]</div>
+            <div class="card-body">
+              <p>[ Description. Sounds like transit optimisation. Actually describes real-time location tracking of all residents. ]</p>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-label">[ Service Category 4 ]</div>
+            <div class="card-title">[ Service Name ]</div>
+            <div class="card-body">
+              <p>[ Description. Sounds like civic engagement. Actually describes social graph mapping and relationship monitoring. ]</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Compliance Note</div>
+          <div class="card-body">
+            <p>[ One line of cold legal language that makes it clear residents have consented to all of this — buried in the residency agreement. ]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PARTNERS TAB -->
+      <div class="tab-panel" id="tab-partners">
+        <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
+        <h2 class="doc-title">Government Partner Network</h2>
+        <div class="doc-meta">
+          Document ref: <span>ZS-PTR-011</span> &nbsp;·&nbsp;
+          Classification: <span>Strictly Confidential</span> &nbsp;·&nbsp;
+          Active partners: <span>27</span>
+        </div>
+
+        <!-- Simple SVG world map with dot markers -->
+        <div class="map-wrap">
+          <div class="card-label" style="margin-bottom:1rem;">Partner Distribution — Global Overview</div>
+          <svg viewBox="0 0 1000 500" xmlns="http://www.w3.org/2000/svg" style="opacity:0.7;">
+            <!-- Simplified world landmass outlines -->
+            <!-- North America -->
+            <path d="M80,80 L180,70 L220,90 L230,140 L210,180 L190,220 L160,240 L140,220 L120,200 L90,170 L70,130 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <!-- South America -->
+            <path d="M170,260 L210,250 L230,280 L225,340 L210,380 L190,400 L170,390 L155,360 L150,320 L155,280 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <!-- Europe -->
+            <path d="M430,60 L490,55 L510,70 L510,100 L490,110 L470,105 L450,115 L430,110 L420,90 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <!-- Africa -->
+            <path d="M440,130 L490,125 L520,140 L530,190 L520,250 L500,290 L475,300 L450,285 L435,240 L430,190 L435,150 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <!-- Asia -->
+            <path d="M520,50 L680,45 L730,70 L740,110 L720,140 L680,150 L640,145 L600,155 L560,145 L530,130 L510,100 L515,70 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <!-- Southeast Asia / Oceania -->
+            <path d="M700,180 L760,175 L780,200 L770,230 L740,235 L710,220 L695,200 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+            <path d="M760,280 L820,275 L840,300 L835,330 L810,340 L780,330 L760,310 Z" fill="none" stroke="#1e5c3a" stroke-width="1"/>
+
+            <!-- Tier 1 partners — bright green dots -->
+            <circle cx="150" cy="130" r="5" fill="#4ead78" opacity="0.9"/>
+            <circle cx="470" cy="80"  r="5" fill="#4ead78" opacity="0.9"/>
+            <circle cx="600" cy="90"  r="5" fill="#4ead78" opacity="0.9"/>
+            <circle cx="650" cy="100" r="5" fill="#4ead78" opacity="0.9"/>
+            <circle cx="490" cy="155" r="5" fill="#4ead78" opacity="0.9"/>
+
+            <!-- Tier 2 partners — amber dots -->
+            <circle cx="110" cy="150" r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="190" cy="270" r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="450" cy="85"  r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="530" cy="75"  r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="680" cy="85"  r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="720" cy="120" r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="460" cy="200" r="4" fill="#c4ae52" opacity="0.8"/>
+            <circle cx="750" cy="200" r="4" fill="#c4ae52" opacity="0.8"/>
+
+            <!-- Tier 3 partners — dim dots -->
+            <circle cx="170" cy="110" r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="200" cy="300" r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="480" cy="70"  r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="560" cy="80"  r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="620" cy="110" r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="700" cy="95"  r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="470" cy="240" r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="510" cy="210" r="3" fill="#3d5447" opacity="0.9"/>
+            <circle cx="790" cy="300" r="3" fill="#3d5447" opacity="0.9"/>
+          </svg>
+          <!-- Legend -->
+          <div style="display:flex;gap:2rem;margin-top:1rem;font-size:0.6rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);">
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#4ead78;margin-right:0.4rem;vertical-align:middle;"></span>Tier 1</span>
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#c4ae52;margin-right:0.4rem;vertical-align:middle;"></span>Tier 2</span>
+            <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#3d5447;margin-right:0.4rem;vertical-align:middle;"></span>Tier 3</span>
+          </div>
+        </div>
+
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Partner Government</th>
+                <th>Tier</th>
+                <th>Contribution</th>
+                <th>Data Access</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-3">Tier 3</span></td><td>[ $XX million ]</td><td>Aggregated demographic report — annual</td></tr>
+              <tr><td>[ Government Name ]</td><td><span class="tier tier-3">Tier 3</span></td><td>[ $XX million ]</td><td>Aggregated demographic report — annual</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- DATA PRODUCTS TAB -->
+      <div class="tab-panel" id="tab-data">
+        <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
+        <h2 class="doc-title">Partner Data Products</h2>
+        <div class="doc-meta">
+          Document ref: <span>ZS-DAT-007</span> &nbsp;·&nbsp;
+          Classification: <span>Strictly Confidential</span> &nbsp;·&nbsp;
+          Last updated: <span>[ DATE ]</span>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Product Overview</div>
+          <div class="card-body">
+            <p>[ 1–2 sentences. Describe in cold corporate language what Zenith is selling to governments. Frame it as "population insights" or "civic intelligence." ]</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Product</th>
+                <th>Tier Availability</th>
+                <th>Description</th>
+                <th>Cadence</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-1">Tier 1</span></td>
+                <td>[ Sounds like analytics. Actually individual-level tracking data. ]</td>
+                <td>Real-time</td>
+              </tr>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-1">Tier 1</span></td>
+                <td>[ Biometric or behavioural scoring described as "wellness metrics." ]</td>
+                <td>Real-time</td>
+              </tr>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-2">Tier 1–2</span></td>
+                <td>[ Social network mapping described as "community engagement data." ]</td>
+                <td>Weekly</td>
+              </tr>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-2">Tier 2</span></td>
+                <td>[ Predictive profiling described as "resident lifecycle modelling." ]</td>
+                <td>Monthly</td>
+              </tr>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-3">Tier 2–3</span></td>
+                <td>[ Aggregated population data, demographic trends. ]</td>
+                <td>Quarterly</td>
+              </tr>
+              <tr>
+                <td>[ Product Name ]</td>
+                <td><span class="tier tier-3">Tier 3</span></td>
+                <td>[ High level summary report. Least invasive tier. ]</td>
+                <td>Annual</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Data Governance Note</div>
+          <div class="card-body">
+            <p>[ One or two lines of legal-sounding language about data sovereignty and compliance that actually says very little. The kind of line that sounds reassuring but commits to nothing. ]</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- RECRUITMENT TAB -->
+      <div class="tab-panel" id="tab-recruitment">
+        <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
+        <h2 class="doc-title">Resident Acquisition — Active Nodes</h2>
+        <div class="doc-meta">
+          Document ref: <span>ZS-REC-019</span> &nbsp;·&nbsp;
+          Classification: <span>Internal Use Only</span> &nbsp;·&nbsp;
+          Active nodes: <span>[ XX ]</span>
+        </div>
+
+        <div class="card">
+          <div class="card-label">Programme Overview</div>
+          <div class="card-body">
+            <p>[ 2–3 sentences. Describe the recruitment programme in HR language. "Talent acquisition," "curated resident cohorts," "ideal community profile." Make it clear they are specifically targeting young educated people from universities. ]</p>
+          </div>
+        </div>
+
+        <div class="card-label" style="margin-bottom:1rem;">Active Recruitment Nodes</div>
+
+        <div class="node-highlight">
+          <div class="node-dot"></div>
+          <div class="node-info">
+            <div class="node-name">[ Your University Name ] — [ Your City ]</div>
+            <div class="node-detail">
+              Node status: <span>Active</span> &nbsp;·&nbsp;
+              Agent: <span>E. Larkin</span> &nbsp;·&nbsp;
+              Cohort target: <span>[ XX ] residents</span> &nbsp;·&nbsp;
+              Pipeline: <span>[ XX ] prospects identified</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="node-highlight" style="opacity:0.5;">
+          <div class="node-dot" style="background:var(--muted);animation:none;"></div>
+          <div class="node-info">
+            <div class="node-name">[ University Name ] — [ City ]</div>
+            <div class="node-detail">Node status: <span>Active</span> &nbsp;·&nbsp; Agent: <span>[ Name ]</span> &nbsp;·&nbsp; Cohort target: <span>[ XX ] residents</span></div>
+          </div>
+        </div>
+
+        <div class="node-highlight" style="opacity:0.5;">
+          <div class="node-dot" style="background:var(--muted);animation:none;"></div>
+          <div class="node-info">
+            <div class="node-name">[ University Name ] — [ City ]</div>
+            <div class="node-detail">Node status: <span>Active</span> &nbsp;·&nbsp; Agent: <span>[ Name ]</span> &nbsp;·&nbsp; Cohort target: <span>[ XX ] residents</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:1.5rem;">
+          <div class="card-label">Ideal Resident Profile</div>
+          <div class="card-body">
+            <p>[ Bullet list of "ideal resident" criteria written in HR language. Age range, education level, employment sector. Hidden between these normal criteria should be one or two lines that imply psychological profiling or compliance likelihood scoring. ]</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ── LOGIN ──
+    function attemptLogin() {
+      const user = document.getElementById('username').value.trim();
+      const pass = document.getElementById('password').value.trim();
+      const err  = document.getElementById('loginError');
+
+      if (user === 'e.larkin' && pass === 'A17-KL3') {
+        document.getElementById('login-page').style.opacity = '0';
+        document.getElementById('login-page').style.transition = 'opacity 0.5s ease';
+        setTimeout(() => {
+          document.getElementById('login-page').style.display = 'none';
+          document.getElementById('portal-page').style.display = 'block';
+        }, 500);
+      } else {
+        err.classList.add('visible');
+        setTimeout(() => err.classList.remove('visible'), 3000);
+      }
+    }
+
+    // Allow Enter key on password field
+    document.getElementById('password').addEventListener('keydown', e => {
+      if (e.key === 'Enter') attemptLogin();
+    });
+
+    // ── TABS ──
+    function switchTab(name) {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelector(`[onclick="switchTab('${name}')"]`).classList.add('active');
+      document.getElementById(`tab-${name}`).classList.add('active');
+    }
+
+    // ── STARFIELD ──
+    const canvas = document.getElementById('stars');
+    const ctx = canvas.getContext('2d');
+    function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
+    resize();
+    window.addEventListener('resize', resize, { passive: true });
+    const stars = Array.from({ length: 220 }, () => ({
+      x: Math.random(), y: Math.random(),
+      r: Math.random() * 1.1 + 0.2,
+      phase: Math.random() * Math.PI * 2,
+      speed: 0.0003 + Math.random() * 0.0005,
+      bright: 0.3 + Math.random() * 0.5,
+    }));
+    function drawStars(ts) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      stars.forEach(s => {
+        const f = s.bright * (0.55 + 0.45 * Math.sin(ts * s.speed + s.phase));
+        ctx.beginPath();
+        ctx.arc(s.x * canvas.width, s.y * canvas.height, s.r, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(200, ${s.bright > 0.75 ? 255 : 220}, 210, ${f})`;
+        ctx.fill();
+      });
+      requestAnimationFrame(drawStars);
+    }
+    requestAnimationFrame(drawStars);
+  </script>
+
+</body>
+</html>
