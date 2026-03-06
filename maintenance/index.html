@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>503 — Zenith Systems</title>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./style.css"/>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="topbar-left">
+      <span class="topbar-logo">Zenith Systems</span>
+      <span class="topbar-divider">/</span>
+      <span>Node Diagnostic Interface</span>
+    </div>
+    <div class="topbar-right">
+      <span><span class="status-dot"></span>Service Disruption Detected</span>
+      <span id="timestamp"></span>
+    </div>
+  </div>
+
+  <main class="main">
+
+    <div class="error-code">Error 503 — Service Unavailable</div>
+    <h1 class="error-title">Service Node Unavailable<span class="cursor"></span></h1>
+    <p class="error-sub">
+      This node has been temporarily suspended pending remote verification.<br/>
+      Automated recovery has not been initiated. Manual diagnostics required.
+    </p>
+
+    <hr class="divider"/>
+
+    <div class="diag-label">Remote Diagnostics</div>
+    <p class="diag-desc">
+      Run the following command to query the node status endpoint directly.
+    </p>
+
+    <div class="code-block">
+      <div class="code-prompt">
+        <span class="code-text">
+          <span class="cmd">curl</span>
+          &nbsp;
+          <span class="url">zenith-systems.com/api/status</span>
+        </span>
+      </div>
+      <button class="copy-btn" id="copyBtn" onclick="copyCmd()">Copy</button>
+    </div>
+
+    <div class="status-section">
+      <div class="status-label">System Status</div>
+      <table class="status-table">
+        <tr>
+          <td>Primary Node</td>
+          <td><span class="tag tag-red">Offline</span></td>
+        </tr>
+        <tr>
+          <td>Redundancy Layer</td>
+          <td><span class="tag tag-amber">Degraded</span></td>
+        </tr>
+        <tr>
+          <td>Remote API</td>
+          <td><span class="tag tag-green">Reachable</span></td>
+        </tr>
+        <tr>
+          <td>Last Verified</td>
+          <td id="lastVerified">—</td>
+        </tr>
+        <tr>
+          <td>Incident Reference</td>
+          <td>ZS-<span id="incidentId"></span></td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="foot">
+      <span>Zenith Systems Internal Network</span>
+      <span>v2.4.1 — restricted access</span>
+    </div>
+
+  </main>
+
+  <script>
+    // Timestamp
+    const now = new Date();
+    const pad = n => String(n).padStart(2, '0');
+    const ts = `${now.getUTCFullYear()}-${pad(now.getUTCMonth()+1)}-${pad(now.getUTCDate())} ${pad(now.getUTCHours())}:${pad(now.getUTCMinutes())} UTC`;
+    document.getElementById('timestamp').textContent = ts;
+    document.getElementById('lastVerified').textContent = ts;
+
+    // Random incident ID
+    document.getElementById('incidentId').textContent =
+      Math.random().toString(36).substring(2,8).toUpperCase();
+
+    // Copy button
+    function copyCmd() {
+      navigator.clipboard.writeText('curl zenith-systems.com/api/status').then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(() => {
+          btn.textContent = 'Copy';
+          btn.classList.remove('copied');
+        }, 2000);
+      });
+    }
+  </script>
+
+</body>
+</html>
