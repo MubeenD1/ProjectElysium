@@ -339,3 +339,58 @@ footer {
 }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.9s ease, transform 0.9s ease; }
 .reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+
+  /* Nav */
+  nav { padding: 1.2rem 1.5rem; }
+  .nav-right { display: none; }
+
+  /* Hero */
+  .hero-bottom { padding: 0 1.5rem; flex-wrap: wrap; gap: 1rem; }
+  .hero-coord  { display: none; }
+
+  /* Glass panels */
+  .glass { margin: 0 1rem; }
+
+  /* Vision */
+  .s-vision { padding: 4rem 2rem; }
+
+  /* Pillars — stack vertically */
+  .s-pillars { padding: 4rem 2rem; }
+  .pillars-header { flex-direction: column; gap: 0.5rem; margin-bottom: 3rem; }
+  .pillars-grid { grid-template-columns: 1fr; gap: 3rem; }
+  .pillar {
+    padding: 0 0 3rem 0 !important;
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+  .pillar:last-child { border-bottom: none; padding-bottom: 0 !important; }
+
+  /* Closing */
+  .s-close { padding: 5rem 2rem; }
+
+  /* Data strip — 2 columns */
+  .s-data { grid-template-columns: repeat(2, 1fr); }
+  .data-item { padding: 2.5rem 1.5rem; }
+  .data-item:nth-child(2) { border-right: none; }
+  .data-num { font-size: 2rem; }
+
+  /* Footer — stack */
+  footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 2rem 1.5rem;
+  }
+  .footer-links { gap: 1.2rem; }
+}
+
+@media (max-width: 480px) {
+  .glass { margin: 0 0.75rem; }
+  .s-vision { padding: 3rem 1.5rem; }
+  .s-pillars { padding: 3rem 1.5rem; }
+  .s-close { padding: 4rem 1.5rem; }
+  .data-item { padding: 2rem 1.2rem; }
+}
