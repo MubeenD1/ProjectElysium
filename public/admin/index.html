@@ -5,7 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portal — Zenith Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="./style.css"/>
+  <link rel="stylesheet" href="/admin/style.css"/>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23080a09'/><rect width='100' height='100' rx='22' fill='none' stroke='%234ead78' stroke-width='6'/><line x1='22' y1='22' x2='78' y2='22' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='78' y1='22' x2='22' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='22' y1='78' x2='78' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/></svg>"/>
+  <script src="/admin/content.js"></script>
 </head>
 <body>
 
@@ -16,7 +18,7 @@
     <div class="orb orb3"></div>
   </div>
 
-  <!-- ── LOGIN PAGE ── -->
+  <!-- LOGIN PAGE -->
   <div id="login-page">
     <div class="login-box">
       <div class="login-logo">
@@ -29,8 +31,8 @@
         </div>
         <span class="login-logo-text">Zenith Systems</span>
       </div>
-      <h1 class="login-title">Internal Portal</h1>
-      <p class="login-sub">Restricted access. Authorised personnel only.</p>
+      <h1 class="login-title" id="login-title"></h1>
+      <p class="login-sub" id="login-sub"></p>
       <div class="field">
         <label>Username</label>
         <input type="text" id="username" placeholder="Username" autocomplete="off" spellcheck="false"/>
@@ -44,7 +46,7 @@
     </div>
   </div>
 
-  <!-- ── PORTAL PAGE ── -->
+  <!-- PORTAL PAGE -->
   <div id="portal-page">
 
     <nav class="portal-nav">
@@ -59,8 +61,8 @@
         Zenith Systems
       </div>
       <div class="portal-nav-right">
-        <div class="portal-user">Logged in as <span>e.larkin</span></div>
-        <div class="portal-access">Clearance: Level 2</div>
+        <div class="portal-user">Logged in as <span id="nav-user"></span></div>
+        <div class="portal-access">Clearance: <span id="nav-clearance"></span></div>
       </div>
     </nav>
 
@@ -78,105 +80,22 @@
         <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
         <h2 class="doc-title">Integrated City Services</h2>
         <div class="doc-meta">
-          Document ref: <span>ZS-SVC-004</span> &nbsp;·&nbsp;
-          Classification: <span>Partner Confidential</span> &nbsp;·&nbsp;
-          Last updated: <span>[ DATE ]</span>
+          Document ref: <span id="svc-ref"></span> &nbsp;·&nbsp;
+          Classification: <span id="svc-class"></span> &nbsp;·&nbsp;
+          Last updated: <span id="svc-date"></span>
         </div>
-
         <div class="confidential-banner">
           <div class="confidential-banner-left">Partner Confidential — Not for Public Distribution</div>
-          <div class="confidential-banner-right">ZS-SVC-004 / RESTRICTED</div>
+          <div class="confidential-banner-right" id="svc-banner-ref"></div>
         </div>
-
         <div class="card">
           <div class="card-label">Overview</div>
-          <div class="card-body">
-            <p>[ 2–3 sentences describing Elysium's integrated services in clean corporate language. Frame it as smart city infrastructure. ]</p>
-          </div>
+          <div class="card-body"><p id="svc-overview"></p></div>
         </div>
-
-        <div class="two-col">
-          <div class="card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
-                  <circle cx="12" cy="9" r="2.5"/>
-                </svg>
-              </div>
-              <div class="card-header-text">
-                <div class="card-tag">City-Wide Deployment</div>
-                <div class="card-title">[ Service Name ]</div>
-              </div>
-            </div>
-            <div class="card-label">[ Service Category 1 ]</div>
-            <div class="card-body">
-              <p>[ Description. Sounds like urban efficiency tech. Actually describes passive surveillance of movement and behaviour. ]</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-                  <circle cx="12" cy="7" r="4"/>
-                </svg>
-              </div>
-              <div class="card-header-text">
-                <div class="card-tag">Passive Collection</div>
-                <div class="card-title">[ Service Name ]</div>
-              </div>
-            </div>
-            <div class="card-label">[ Service Category 2 ]</div>
-            <div class="card-body">
-              <p>[ Description. Sounds like community wellness. Actually describes biometric data collection and profiling. ]</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="10"/>
-                  <path d="M12 8v4l3 3"/>
-                </svg>
-              </div>
-              <div class="card-header-text">
-                <div class="card-tag">Real-Time Feed</div>
-                <div class="card-title">[ Service Name ]</div>
-              </div>
-            </div>
-            <div class="card-label">[ Service Category 3 ]</div>
-            <div class="card-body">
-              <p>[ Description. Sounds like transit optimisation. Actually describes real-time location tracking of all residents. ]</p>
-            </div>
-          </div>
-          <div class="card">
-            <div class="card-header">
-              <div class="card-icon">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                  <circle cx="9" cy="7" r="4"/>
-                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                </svg>
-              </div>
-              <div class="card-header-text">
-                <div class="card-tag">Graph Mapping</div>
-                <div class="card-title">[ Service Name ]</div>
-              </div>
-            </div>
-            <div class="card-label">[ Service Category 4 ]</div>
-            <div class="card-body">
-              <p>[ Description. Sounds like civic engagement. Actually describes social graph mapping and relationship monitoring. ]</p>
-            </div>
-          </div>
-        </div>
-
+        <div class="two-col" id="svc-cards"></div>
         <div class="card">
           <div class="card-label">Compliance Note</div>
-          <div class="card-body">
-            <p>All data collection is conducted under the terms of the Elysium Residency Agreement, Section <span class="redacted">12(b) — Continuous Environmental Monitoring and Behavioural Analytics Consent</span>, to which all residents provide informed consent upon registration. Zenith Systems assumes no liability for secondary use of exported data by <span class="redacted">partner government entities</span> once delivered.</p>
-          </div>
+          <div class="card-body"><p id="svc-compliance"></p></div>
         </div>
       </div>
 
@@ -185,12 +104,10 @@
         <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
         <h2 class="doc-title">Government Partner Network</h2>
         <div class="doc-meta">
-          Document ref: <span>ZS-PTR-011</span> &nbsp;·&nbsp;
-          Classification: <span>Strictly Confidential</span> &nbsp;·&nbsp;
-          Active partners: <span>27</span>
+          Document ref: <span id="ptr-ref"></span> &nbsp;·&nbsp;
+          Classification: <span id="ptr-class"></span> &nbsp;·&nbsp;
+          Active partners: <span id="ptr-count"></span>
         </div>
-
-        <!-- amCharts world map -->
         <div class="map-wrap">
           <div class="card-label" style="margin-bottom:1rem;">Partner Distribution — Global Overview</div>
           <div id="chartdiv" style="width:100%;height:420px;"></div>
@@ -200,7 +117,6 @@
             <span><span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:#3d5447;margin-right:0.4rem;vertical-align:middle;"></span>Tier 3</span>
           </div>
         </div>
-
         <div class="card">
           <table class="data-table">
             <thead>
@@ -211,16 +127,7 @@
                 <th>Data Access</th>
               </tr>
             </thead>
-            <tbody>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-1">Tier 1</span></td><td>[ $XX billion ]</td><td>Full resident feed — real-time</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-2">Tier 2</span></td><td>[ $XX billion ]</td><td>Behavioural index — quarterly export</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-3">Tier 3</span></td><td>[ $XX million ]</td><td>Aggregated demographic report — annual</td></tr>
-              <tr><td>[ Government Name ]</td><td><span class="tier tier-3">Tier 3</span></td><td>[ $XX million ]</td><td>Aggregated demographic report — annual</td></tr>
-            </tbody>
+            <tbody id="ptr-table"></tbody>
           </table>
         </div>
       </div>
@@ -230,23 +137,18 @@
         <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
         <h2 class="doc-title">Partner Data Products</h2>
         <div class="doc-meta">
-          Document ref: <span>ZS-DAT-007</span> &nbsp;·&nbsp;
-          Classification: <span>Strictly Confidential</span> &nbsp;·&nbsp;
-          Last updated: <span>[ DATE ]</span>
+          Document ref: <span id="dat-ref"></span> &nbsp;·&nbsp;
+          Classification: <span id="dat-class"></span> &nbsp;·&nbsp;
+          Last updated: <span id="dat-date"></span>
         </div>
-
         <div class="confidential-banner">
           <div class="confidential-banner-left">Strictly Confidential — Authorised Recipients Only</div>
-          <div class="confidential-banner-right">ZS-DAT-007 / EYES ONLY</div>
+          <div class="confidential-banner-right" id="dat-banner-ref"></div>
         </div>
-
         <div class="card">
           <div class="card-label">Product Overview</div>
-          <div class="card-body">
-            <p>[ 1–2 sentences. Describe in cold corporate language what Zenith is selling to governments. Frame it as "population insights" or "civic intelligence." ]</p>
-          </div>
+          <div class="card-body"><p id="dat-overview"></p></div>
         </div>
-
         <div class="card">
           <table class="data-table">
             <thead>
@@ -257,52 +159,12 @@
                 <th>Cadence</th>
               </tr>
             </thead>
-            <tbody>
-              <tr class="row-sensitive">
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-1">Tier 1</span></td>
-                <td>[ Sounds like analytics. Actually individual-level tracking data. ]</td>
-                <td>Real-time</td>
-              </tr>
-              <tr class="row-sensitive">
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-1">Tier 1</span></td>
-                <td>[ Biometric or behavioural scoring described as "wellness metrics." ]</td>
-                <td>Real-time</td>
-              </tr>
-              <tr>
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-2">Tier 1–2</span></td>
-                <td>[ Social network mapping described as "community engagement data." ]</td>
-                <td>Weekly</td>
-              </tr>
-              <tr>
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-2">Tier 2</span></td>
-                <td>[ Predictive profiling described as "resident lifecycle modelling." ]</td>
-                <td>Monthly</td>
-              </tr>
-              <tr>
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-3">Tier 2–3</span></td>
-                <td>[ Aggregated population data, demographic trends. ]</td>
-                <td>Quarterly</td>
-              </tr>
-              <tr>
-                <td>[ Product Name ]</td>
-                <td><span class="tier tier-3">Tier 3</span></td>
-                <td>[ High level summary report. Least invasive tier. ]</td>
-                <td>Annual</td>
-              </tr>
-            </tbody>
+            <tbody id="dat-table"></tbody>
           </table>
         </div>
-
         <div class="card">
           <div class="card-label">Data Governance Note</div>
-          <div class="card-body">
-            <p>All exported data products are delivered in compliance with the <span class="redacted">Elysium Inter-Governmental Data Sharing Framework (IGDSF-2024)</span>, a binding agreement between Zenith Systems and all partner governments. Zenith Systems retains <span class="redacted">full ownership and licensing rights</span> over all resident data indefinitely. Partner governments are prohibited from disclosing the existence of this agreement to <span class="redacted">domestic regulatory bodies or the public</span> without prior written consent from Zenith Systems.</p>
-          </div>
+          <div class="card-body"><p id="dat-governance"></p></div>
         </div>
       </div>
 
@@ -311,72 +173,152 @@
         <div class="doc-eyebrow">Internal Documentation — Project Elysium</div>
         <h2 class="doc-title">Resident Acquisition — Active Nodes</h2>
         <div class="doc-meta">
-          Document ref: <span>ZS-REC-019</span> &nbsp;·&nbsp;
-          Classification: <span>Internal Use Only</span> &nbsp;·&nbsp;
-          Active nodes: <span>[ XX ]</span>
+          Document ref: <span id="rec-ref"></span> &nbsp;·&nbsp;
+          Classification: <span id="rec-class"></span> &nbsp;·&nbsp;
+          Active nodes: <span id="rec-nodes"></span>
         </div>
-
         <div class="card">
           <div class="card-label">Programme Overview</div>
-          <div class="card-body">
-            <p>[ 2–3 sentences. Describe the recruitment programme in HR language. "Talent acquisition," "curated resident cohorts," "ideal community profile." Make it clear they are specifically targeting young educated people from universities. ]</p>
-          </div>
+          <div class="card-body"><p id="rec-overview"></p></div>
         </div>
-
         <div class="card-label" style="margin-bottom:1rem;">Active Recruitment Nodes</div>
-
-        <div class="node-highlight">
-          <div class="node-dot"></div>
-          <div class="node-info">
-            <div class="node-name">[ Your University Name ] — [ Your City ]</div>
-            <div class="node-detail">
-              Node status: <span>Active</span> &nbsp;·&nbsp;
-              Agent: <span>E. Larkin</span> &nbsp;·&nbsp;
-              Cohort target: <span>[ XX ] residents</span> &nbsp;·&nbsp;
-              Pipeline: <span>[ XX ] prospects identified</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="node-highlight" style="opacity:0.5;">
-          <div class="node-dot" style="background:var(--muted);animation:none;"></div>
-          <div class="node-info">
-            <div class="node-name">[ University Name ] — [ City ]</div>
-            <div class="node-detail">Node status: <span>Active</span> &nbsp;·&nbsp; Agent: <span>[ Name ]</span> &nbsp;·&nbsp; Cohort target: <span>[ XX ] residents</span></div>
-          </div>
-        </div>
-
-        <div class="node-highlight" style="opacity:0.5;">
-          <div class="node-dot" style="background:var(--muted);animation:none;"></div>
-          <div class="node-info">
-            <div class="node-name">[ University Name ] — [ City ]</div>
-            <div class="node-detail">Node status: <span>Active</span> &nbsp;·&nbsp; Agent: <span>[ Name ]</span> &nbsp;·&nbsp; Cohort target: <span>[ XX ] residents</span></div>
-          </div>
-        </div>
-
+        <div id="rec-your-node"></div>
+        <div id="rec-other-nodes"></div>
         <div class="card" style="margin-top:1.5rem;">
           <div class="card-label">Ideal Resident Profile</div>
-          <div class="card-body">
-            <p>[ Bullet list of "ideal resident" criteria written in HR language. Age range, education level, employment sector. Hidden between these normal criteria should be one or two lines that imply psychological profiling or compliance likelihood scoring. ]</p>
-          </div>
+          <div class="card-body"><p id="rec-profile"></p></div>
         </div>
-
       </div>
+
     </div>
   </div>
 
   <script>
-    // ── LOGIN ──
+    const C = CONTENT;
+
+    // Login
+    document.getElementById('login-title').textContent = C.login.title;
+    document.getElementById('login-sub').textContent   = C.login.subtitle;
+
+    // Nav
+    document.getElementById('nav-user').textContent      = C.nav.loggedInAs;
+    document.getElementById('nav-clearance').textContent = C.nav.clearance;
+
+    // ── SERVICES ──
+    const svc = C.services;
+    document.getElementById('svc-ref').textContent        = svc.docRef;
+    document.getElementById('svc-class').textContent      = svc.classification;
+    document.getElementById('svc-date').textContent       = svc.lastUpdated;
+    document.getElementById('svc-banner-ref').textContent = `${svc.docRef} / RESTRICTED`;
+    document.getElementById('svc-overview').textContent   = svc.overview;
+    document.getElementById('svc-compliance').innerHTML   = svc.complianceNote;
+
+    const svcIcons = [
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/><circle cx="12" cy="9" r="2.5"/></svg>`,
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`,
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>`,
+      `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+    ];
+    const svcCardsEl = document.getElementById('svc-cards');
+    svc.cards.forEach((card, i) => {
+      svcCardsEl.innerHTML += `
+        <div class="card">
+          <div class="card-header">
+            <div class="card-icon">${svcIcons[i]}</div>
+            <div class="card-header-text">
+              <div class="card-tag">${card.tag}</div>
+              <div class="card-title">${card.title}</div>
+            </div>
+          </div>
+          <div class="card-label">${card.category}</div>
+          <div class="card-body"><p>${card.description}</p></div>
+        </div>`;
+    });
+
+    // ── PARTNERS ──
+    const ptr = C.partners;
+    document.getElementById('ptr-ref').textContent   = ptr.docRef;
+    document.getElementById('ptr-class').textContent = ptr.classification;
+    document.getElementById('ptr-count').textContent = ptr.activePartners;
+
+    const ptrTable = document.getElementById('ptr-table');
+    ptr.tableRows.forEach(row => {
+      const tierClass = `tier-${row.tier}`;
+      ptrTable.innerHTML += `
+        <tr>
+          <td>${row.name}</td>
+          <td><span class="tier ${tierClass}">Tier ${row.tier}</span></td>
+          <td>${row.contribution}</td>
+          <td>${row.access}</td>
+        </tr>`;
+    });
+
+    // ── DATA PRODUCTS ──
+    const dat = C.data;
+    document.getElementById('dat-ref').textContent        = dat.docRef;
+    document.getElementById('dat-class').textContent      = dat.classification;
+    document.getElementById('dat-date').textContent       = dat.lastUpdated;
+    document.getElementById('dat-banner-ref').textContent = `${dat.docRef} / EYES ONLY`;
+    document.getElementById('dat-overview').textContent   = dat.overview;
+    document.getElementById('dat-governance').innerHTML   = dat.governanceNote;
+
+    const datTable = document.getElementById('dat-table');
+    dat.products.forEach(p => {
+      datTable.innerHTML += `
+        <tr${p.sensitive ? ' class="row-sensitive"' : ''}>
+          <td>${p.name}</td>
+          <td><span class="tier ${p.tierClass}">Tier ${p.tier}</span></td>
+          <td>${p.description}</td>
+          <td>${p.cadence}</td>
+        </tr>`;
+    });
+
+    // ── RECRUITMENT ──
+    const rec = C.recruitment;
+    document.getElementById('rec-ref').textContent      = rec.docRef;
+    document.getElementById('rec-class').textContent    = rec.classification;
+    document.getElementById('rec-nodes').textContent    = rec.activeNodes;
+    document.getElementById('rec-overview').textContent = rec.overview;
+    document.getElementById('rec-profile').innerHTML    = rec.residentProfile;
+
+    const yn = rec.yourNode;
+    document.getElementById('rec-your-node').innerHTML = `
+      <div class="node-highlight">
+        <div class="node-dot"></div>
+        <div class="node-info">
+          <div class="node-name">${yn.university} — ${yn.city}</div>
+          <div class="node-detail">
+            Node status: <span>Active</span> &nbsp;·&nbsp;
+            Agent: <span>${yn.agent}</span> &nbsp;·&nbsp;
+            Cohort target: <span>${yn.cohortTarget} residents</span> &nbsp;·&nbsp;
+            Pipeline: <span>${yn.pipeline} prospects identified</span>
+          </div>
+        </div>
+      </div>`;
+
+    const otherEl = document.getElementById('rec-other-nodes');
+    rec.otherNodes.forEach(n => {
+      otherEl.innerHTML += `
+        <div class="node-highlight" style="opacity:0.5;">
+          <div class="node-dot" style="background:var(--muted);animation:none;"></div>
+          <div class="node-info">
+            <div class="node-name">${n.university} — ${n.city}</div>
+            <div class="node-detail">Node status: <span>Active</span> &nbsp;·&nbsp; Agent: <span>${n.agent}</span> &nbsp;·&nbsp; Cohort target: <span>${n.cohortTarget} residents</span></div>
+          </div>
+        </div>`;
+    });
+
+    // ── LOGIN LOGIC ──
     function attemptLogin() {
       const user = document.getElementById('username').value.trim();
       const pass = document.getElementById('password').value.trim();
       const err  = document.getElementById('loginError');
-
-      if (user === 'e.larkin' && pass === 'A17-KL3') {
-        document.getElementById('login-page').style.opacity = '0';
-        document.getElementById('login-page').style.transition = 'opacity 0.5s ease';
+      if (user === C.login.username && pass === C.login.password) {
+        const lp = document.getElementById('login-page');
+        lp.style.transition = 'opacity 0.5s ease';
+        lp.style.opacity = '0';
         setTimeout(() => {
-          document.getElementById('login-page').style.display = 'none';
+          lp.style.display = 'none';
           document.getElementById('portal-page').style.display = 'block';
         }, 500);
       } else {
@@ -384,8 +326,6 @@
         setTimeout(() => err.classList.remove('visible'), 3000);
       }
     }
-
-    // Allow Enter key on password field
     document.getElementById('password').addEventListener('keydown', e => {
       if (e.key === 'Enter') attemptLogin();
     });
@@ -431,165 +371,91 @@
   <script src="https://cdn.amcharts.com/lib/5/geodata/worldLow.js"></script>
   <script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
   <script>
-    // Partner data — replace country IDs and tiers as needed
-    // Full ISO 3166-1 alpha-2 country codes: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2
-    const partnerData = [
-      // Tier 1 — full resident feed
-      { id: "US", name: "United States",    tier: 1 },
-      { id: "GB", name: "United Kingdom",   tier: 1 },
-      { id: "CN", name: "China",            tier: 1 },
-      { id: "DE", name: "Germany",          tier: 1 },
-      { id: "IN", name: "India",            tier: 1 },
-      // Tier 2 — behavioural index
-      { id: "FR", name: "France",           tier: 2 },
-      { id: "BR", name: "Brazil",           tier: 2 },
-      { id: "AU", name: "Australia",        tier: 2 },
-      { id: "JP", name: "Japan",            tier: 2 },
-      { id: "KR", name: "South Korea",      tier: 2 },
-      { id: "ZA", name: "South Africa",     tier: 2 },
-      { id: "CA", name: "Canada",           tier: 2 },
-      { id: "SG", name: "Singapore",        tier: 2 },
-      // Tier 3 — aggregated reports
-      { id: "MX", name: "Mexico",           tier: 3 },
-      { id: "NG", name: "Nigeria",          tier: 3 },
-      { id: "PK", name: "Pakistan",         tier: 3 },
-      { id: "EG", name: "Egypt",            tier: 3 },
-      { id: "AR", name: "Argentina",        tier: 3 },
-      { id: "SE", name: "Sweden",           tier: 3 },
-      { id: "NL", name: "Netherlands",      tier: 3 },
-      { id: "NO", name: "Norway",           tier: 3 },
-      { id: "TH", name: "Thailand",         tier: 3 },
-      { id: "PH", name: "Philippines",      tier: 3 },
-      { id: "ID", name: "Indonesia",        tier: 3 },
-      { id: "TR", name: "Turkey",           tier: 3 },
-      { id: "IL", name: "Israel",           tier: 3 },
-      { id: "AE", name: "UAE",              tier: 3 },
-    ];
-
-    const tierColors = {
-      1: 0x4ead78,
-      2: 0xc4ae52,
-      3: 0x3d5447,
-    };
+    const partnerData = CONTENT.partners.countries;
+    const tierColors  = { 1: 0x4ead78, 2: 0xc4ae52, 3: 0x3d5447 };
 
     const root = am5.Root.new("chartdiv");
     root.setThemes([am5themes_Animated.new(root)]);
+    root.interfaceColors.set("text", am5.color(0xe8f2eb));
 
     const chart = root.container.children.push(
       am5map.MapChart.new(root, {
-        panX: "rotateX",
-        panY: "none",
+        panX: "rotateX", panY: "none",
         projection: am5map.geoNaturalEarth1(),
         background: am5.Rectangle.new(root, { fill: am5.color(0x06080a), fillOpacity: 0 }),
       })
     );
 
-    // Land polygons
     const polygonSeries = chart.series.push(
-      am5map.MapPolygonSeries.new(root, {
-        geoJSON: am5geodata_worldLow,
-        exclude: ["AQ"],
-      })
+      am5map.MapPolygonSeries.new(root, { geoJSON: am5geodata_worldLow, exclude: ["AQ"] })
     );
     polygonSeries.mapPolygons.template.setAll({
-      fill: am5.color(0x0d140f),
-      stroke: am5.color(0x1e5c3a),
-      strokeWidth: 0.5,
-      fillOpacity: 1,
+      fill: am5.color(0x0d140f), stroke: am5.color(0x1e5c3a), strokeWidth: 0.5, fillOpacity: 1,
     });
-    polygonSeries.mapPolygons.template.states.create("hover", {
-      fill: am5.color(0x152a1c),
-    });
+    polygonSeries.mapPolygons.template.states.create("hover", { fill: am5.color(0x152a1c) });
 
-    // Highlight partner countries
     const highlightSeries = chart.series.push(
-      am5map.MapPolygonSeries.new(root, {
-        geoJSON: am5geodata_worldLow,
-        include: partnerData.map(p => p.id),
-      })
+      am5map.MapPolygonSeries.new(root, { geoJSON: am5geodata_worldLow, include: partnerData.map(p => p.id) })
     );
-    highlightSeries.mapPolygons.template.setAll({
-      strokeWidth: 0.5,
-      stroke: am5.color(0x1e5c3a),
-    });
+    highlightSeries.mapPolygons.template.setAll({ strokeWidth: 0.5, stroke: am5.color(0x1e5c3a) });
     highlightSeries.mapPolygons.template.adapters.add("fill", (fill, target) => {
-      const id = target.dataItem?.get("id");
-      const partner = partnerData.find(p => p.id === id);
+      const partner = partnerData.find(p => p.id === target.dataItem?.get("id"));
       if (!partner) return fill;
-      const colors = { 1: 0x1a3d28, 2: 0x2e2a10, 3: 0x121f14 };
-      return am5.color(colors[partner.tier]);
+      return am5.color({ 1: 0x1a3d28, 2: 0x2e2a10, 3: 0x121f14 }[partner.tier]);
     });
     highlightSeries.mapPolygons.template.adapters.add("stroke", (stroke, target) => {
-      const id = target.dataItem?.get("id");
-      const partner = partnerData.find(p => p.id === id);
+      const partner = partnerData.find(p => p.id === target.dataItem?.get("id"));
       if (!partner) return stroke;
       return am5.color(tierColors[partner.tier]);
     });
 
-    // Dot markers on each partner
     const pointSeries = chart.series.push(
       am5map.MapPointSeries.new(root, { polygonIdField: "country" })
     );
     pointSeries.bullets.push((root, series, dataItem) => {
-      const tier = dataItem.dataContext.tier;
+      const tier  = dataItem.dataContext.tier;
       const color = tierColors[tier];
-      const size = tier === 1 ? 7 : tier === 2 ? 5 : 4;
-      const tierLabels = { 1: "Tier 1 — Full resident feed, real-time", 2: "Tier 2 — Behavioural index, quarterly export", 3: "Tier 3 — Aggregated demographic report, annual" };
+      const size  = tier === 1 ? 7 : tier === 2 ? 5 : 4;
+      const tierLabels = {
+        1: "Tier 1 — Full resident feed, real-time",
+        2: "Tier 2 — Behavioural index, quarterly export",
+        3: "Tier 3 — Aggregated demographic report, annual",
+      };
 
       const circle = am5.Circle.new(root, {
         radius: size,
         fill: am5.color(color),
         fillOpacity: tier === 1 ? 0.95 : tier === 2 ? 0.8 : 0.6,
-        stroke: am5.color(color),
-        strokeOpacity: 0.3,
-        strokeWidth: 4,
+        stroke: am5.color(color), strokeOpacity: 0.3, strokeWidth: 4,
         cursorOverStyle: "pointer",
         tooltipText: `[bold]{name}[/]\n${tierLabels[tier]}`,
         tooltip: am5.Tooltip.new(root, {
           getFillFromSprite: false,
           background: am5.Rectangle.new(root, {
-            fill: am5.color(0x0a100c),
-            fillOpacity: 0.95,
-            stroke: am5.color(color),
-            strokeOpacity: 0.4,
-            strokeWidth: 1,
-            cornerRadiusTL: 4, cornerRadiusTR: 4,
-            cornerRadiusBL: 4, cornerRadiusBR: 4,
+            fill: am5.color(0x0a100c), fillOpacity: 0.95,
+            stroke: am5.color(color), strokeOpacity: 0.4, strokeWidth: 1,
+            cornerRadiusTL: 4, cornerRadiusTR: 4, cornerRadiusBL: 4, cornerRadiusBR: 4,
           }),
         }),
       });
 
-      // Pulse animation on tier 1 dots
       if (tier === 1) {
-        circle.animate({
-          key: "strokeOpacity",
-          from: 0.5,
-          to: 0,
-          duration: 1500,
-          loops: Infinity,
-        });
-        circle.animate({
-          key: "strokeWidth",
-          from: 2,
-          to: 12,
-          duration: 1500,
-          loops: Infinity,
-        });
+        circle.animate({ key: "strokeOpacity", from: 0.5, to: 0,  duration: 1500, loops: Infinity });
+        circle.animate({ key: "strokeWidth",   from: 2,   to: 12, duration: 1500, loops: Infinity });
       }
 
-      // Style the tooltip label
-      circle.get("tooltip").label.setAll({
-        fontSize: 11,
-        fill: am5.color(0xb8ccbf),
-        lineHeight: 1.6,
+      const tooltip = circle.get("tooltip");
+      tooltip.label.setAll({ fontSize: 11, lineHeight: 1.6 });
+      tooltip.label.states.create("default", { fill: am5.color(0xe8f2eb) });
+      tooltip.get("background").setAll({
+        fill: am5.color(0x0a100c), fillOpacity: 0.95,
+        stroke: am5.color(color), strokeOpacity: 0.4, strokeWidth: 1,
       });
 
       return am5.Bullet.new(root, { sprite: circle });
     });
-    pointSeries.data.setAll(
-      partnerData.map(p => ({ country: p.id, name: p.name, tier: p.tier }))
-    );
 
+    pointSeries.data.setAll(partnerData.map(p => ({ country: p.id, name: p.name, tier: p.tier })));
     chart.appear(1000, 100);
   </script>
 
