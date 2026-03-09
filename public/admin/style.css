@@ -341,3 +341,77 @@ html, body {
   .two-col { grid-template-columns: 1fr; }
   .portal-access { display: none; }
 }
+
+/* ── CONFIDENTIAL BANNER ── */
+.confidential-banner {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0.7rem 1.2rem;
+  background: rgba(125,58,58,0.08);
+  border: 1px solid rgba(125,58,58,0.25);
+  border-radius: 6px;
+  margin-bottom: 2rem;
+}
+.confidential-banner-left {
+  display: flex; align-items: center; gap: 0.8rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.62rem; letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--red-l);
+}
+.confidential-banner-left::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--red-l); flex-shrink: 0;
+}
+.confidential-banner-right {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.58rem; letter-spacing: 0.1em;
+  color: rgba(192,92,92,0.45);
+}
+
+/* ── SERVICE CARD EXTRAS ── */
+.card-tag {
+  display: inline-block; padding: 0.15rem 0.5rem; border-radius: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem; letter-spacing: 0.12em; text-transform: uppercase;
+  background: rgba(78,173,120,0.08);
+  border: 1px solid rgba(78,173,120,0.2);
+  color: var(--green-l); margin-bottom: 0.8rem;
+  margin-right: 0.4rem;
+}
+.card-tag.tag-red {
+  background: rgba(125,58,58,0.1);
+  border-color: rgba(125,58,58,0.3);
+  color: var(--red-l);
+}
+.card-tag.tag-amber {
+  background: rgba(138,122,58,0.1);
+  border-color: rgba(138,122,58,0.3);
+  color: var(--amber-l);
+}
+.card-icon {
+  width: 32px; height: 32px;
+  border: 1px solid rgba(78,173,120,0.15);
+  border-radius: 8px; display: grid; place-items: center;
+  background: rgba(78,173,120,0.05);
+  margin-bottom: 1rem; flex-shrink: 0;
+}
+.card-icon svg { stroke: var(--green-l); }
+.card-header { display: flex; align-items: flex-start; gap: 1rem; margin-bottom: 0.8rem; }
+.card-header-text { flex: 1; }
+
+/* ── REDACTED TEXT ── */
+.redacted {
+  background: var(--white);
+  color: transparent;
+  border-radius: 2px;
+  user-select: none;
+  padding: 0 2px;
+}
+
+/* ── WARNING ROW ── */
+.data-table tr.row-sensitive td {
+  color: rgba(192,92,92,0.7);
+}
+.data-table tr.row-sensitive td:first-child {
+  color: var(--red-l);
+}

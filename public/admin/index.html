@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Portal — Zenith Systems</title>
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700&family=Inter:wght@300;400&family=JetBrains+Mono:wght@300;400&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="/admin/style.css"/>
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23080a09'/><rect width='100' height='100' rx='22' fill='none' stroke='%234ead78' stroke-width='6'/><line x1='22' y1='22' x2='78' y2='22' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='78' y1='22' x2='22' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='22' y1='78' x2='78' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/></svg>"/>
+  <link rel="stylesheet" href="./style.css"/>
 </head>
 <body>
 
@@ -84,6 +83,11 @@
           Last updated: <span>[ DATE ]</span>
         </div>
 
+        <div class="confidential-banner">
+          <div class="confidential-banner-left">Partner Confidential — Not for Public Distribution</div>
+          <div class="confidential-banner-right">ZS-SVC-004 / RESTRICTED</div>
+        </div>
+
         <div class="card">
           <div class="card-label">Overview</div>
           <div class="card-body">
@@ -93,29 +97,75 @@
 
         <div class="two-col">
           <div class="card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+                  <circle cx="12" cy="9" r="2.5"/>
+                </svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-tag">City-Wide Deployment</div>
+                <div class="card-title">[ Service Name ]</div>
+              </div>
+            </div>
             <div class="card-label">[ Service Category 1 ]</div>
-            <div class="card-title">[ Service Name ]</div>
             <div class="card-body">
               <p>[ Description. Sounds like urban efficiency tech. Actually describes passive surveillance of movement and behaviour. ]</p>
             </div>
           </div>
           <div class="card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                  <circle cx="12" cy="7" r="4"/>
+                </svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-tag">Passive Collection</div>
+                <div class="card-title">[ Service Name ]</div>
+              </div>
+            </div>
             <div class="card-label">[ Service Category 2 ]</div>
-            <div class="card-title">[ Service Name ]</div>
             <div class="card-body">
               <p>[ Description. Sounds like community wellness. Actually describes biometric data collection and profiling. ]</p>
             </div>
           </div>
           <div class="card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="10"/>
+                  <path d="M12 8v4l3 3"/>
+                </svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-tag">Real-Time Feed</div>
+                <div class="card-title">[ Service Name ]</div>
+              </div>
+            </div>
             <div class="card-label">[ Service Category 3 ]</div>
-            <div class="card-title">[ Service Name ]</div>
             <div class="card-body">
               <p>[ Description. Sounds like transit optimisation. Actually describes real-time location tracking of all residents. ]</p>
             </div>
           </div>
           <div class="card">
+            <div class="card-header">
+              <div class="card-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                  <circle cx="9" cy="7" r="4"/>
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                </svg>
+              </div>
+              <div class="card-header-text">
+                <div class="card-tag">Graph Mapping</div>
+                <div class="card-title">[ Service Name ]</div>
+              </div>
+            </div>
             <div class="card-label">[ Service Category 4 ]</div>
-            <div class="card-title">[ Service Name ]</div>
             <div class="card-body">
               <p>[ Description. Sounds like civic engagement. Actually describes social graph mapping and relationship monitoring. ]</p>
             </div>
@@ -125,7 +175,7 @@
         <div class="card">
           <div class="card-label">Compliance Note</div>
           <div class="card-body">
-            <p>[ One line of cold legal language that makes it clear residents have consented to all of this — buried in the residency agreement. ]</p>
+            <p>All data collection is conducted under the terms of the Elysium Residency Agreement, Section <span class="redacted">12(b) — Continuous Environmental Monitoring and Behavioural Analytics Consent</span>, to which all residents provide informed consent upon registration. Zenith Systems assumes no liability for secondary use of exported data by <span class="redacted">partner government entities</span> once delivered.</p>
           </div>
         </div>
       </div>
@@ -185,6 +235,11 @@
           Last updated: <span>[ DATE ]</span>
         </div>
 
+        <div class="confidential-banner">
+          <div class="confidential-banner-left">Strictly Confidential — Authorised Recipients Only</div>
+          <div class="confidential-banner-right">ZS-DAT-007 / EYES ONLY</div>
+        </div>
+
         <div class="card">
           <div class="card-label">Product Overview</div>
           <div class="card-body">
@@ -203,13 +258,13 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr class="row-sensitive">
                 <td>[ Product Name ]</td>
                 <td><span class="tier tier-1">Tier 1</span></td>
                 <td>[ Sounds like analytics. Actually individual-level tracking data. ]</td>
                 <td>Real-time</td>
               </tr>
-              <tr>
+              <tr class="row-sensitive">
                 <td>[ Product Name ]</td>
                 <td><span class="tier tier-1">Tier 1</span></td>
                 <td>[ Biometric or behavioural scoring described as "wellness metrics." ]</td>
@@ -246,7 +301,7 @@
         <div class="card">
           <div class="card-label">Data Governance Note</div>
           <div class="card-body">
-            <p>[ One or two lines of legal-sounding language about data sovereignty and compliance that actually says very little. The kind of line that sounds reassuring but commits to nothing. ]</p>
+            <p>All exported data products are delivered in compliance with the <span class="redacted">Elysium Inter-Governmental Data Sharing Framework (IGDSF-2024)</span>, a binding agreement between Zenith Systems and all partner governments. Zenith Systems retains <span class="redacted">full ownership and licensing rights</span> over all resident data indefinitely. Partner governments are prohibited from disclosing the existence of this agreement to <span class="redacted">domestic regulatory bodies or the public</span> without prior written consent from Zenith Systems.</p>
           </div>
         </div>
       </div>
@@ -419,7 +474,6 @@
 
     const root = am5.Root.new("chartdiv");
     root.setThemes([am5themes_Animated.new(root)]);
-    root.interfaceColors.set("text", am5.color(0xe8f2eb));
 
     const chart = root.container.children.push(
       am5map.MapChart.new(root, {
@@ -523,21 +577,12 @@
         });
       }
 
-    const tooltip = circle.get("tooltip");
-      tooltip.label.setAll({
-      fontSize: 11,
-      lineHeight: 1.6,
-    });
-    tooltip.label.states.create("default", {
-      fill: am5.color(0xe8f2eb),
-    });
-    tooltip.get("background").setAll({
-      fill: am5.color(0x0a100c),
-      fillOpacity: 0.95,
-      stroke: am5.color(color),
-      strokeOpacity: 0.4,
-      strokeWidth: 1,
-    });
+      // Style the tooltip label
+      circle.get("tooltip").label.setAll({
+        fontSize: 11,
+        fill: am5.color(0xb8ccbf),
+        lineHeight: 1.6,
+      });
 
       return am5.Bullet.new(root, { sprite: circle });
     });
