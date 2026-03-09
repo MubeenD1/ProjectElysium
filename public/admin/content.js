@@ -137,7 +137,7 @@ const CONTENT = {
     classification: "Internal Use Only",
     activeNodes:    3,
 
-    overview: `[ 2–3 sentences. Describe the recruitment programme in HR language. "Talent acquisition," "curated resident cohorts," "ideal community profile." Make it clear they are specifically targeting young educated people from universities. ]`,
+    overview: `Zenith-Systems' Resident Acquisition Programme identifies and engages high-potential candidates across active recruitment nodes. Through curated information seeding and agent-led outreach to targetted environemnts, the programme cultivates ideal resident cohorts aligned with Elysium's community profile.`,
 
     // Your node — highlighted with pulsing green dot
     yourNode: {
@@ -155,7 +155,7 @@ const CONTENT = {
     ],
 
     // Ideal resident profile — supports HTML, use <br/> for line breaks
-    residentProfile: `The ideal resident candidate criteriashould meet all the conditions under section 7 paragraph 6 of recruitment. Between the ages of 18-24, educated with level 7 and upwards NQF, and not under employment contract. Please review section 7 for more details on criteria priority and techniques of persuasion.`,
+    residentProfile: `The ideal resident candidate should meet all conditions under Section 7, Paragraph 6 of the Acquisition Guidelines. Candidates must fall within the 18–24 age bracket, hold or be completing a qualification at NQF Level 7 or above, and must not be bound by an existing employment contract. Please review Section 7 for full criteria priority rankings and approved techniques of engagement.`,
   },
 
 };
