@@ -148,11 +148,6 @@ body::after {
   display: flex; align-items: center; gap: 0.8rem;
   flex: 1;
 }
-.code-prompt::before {
-  content: '$';
-  color: var(--muted);
-  flex-shrink: 0;
-}
 .code-text {
   color: var(--white);
   font-size: 0.78rem;
@@ -163,8 +158,8 @@ body::after {
 .copy-btn {
   background: none; border: 1px solid var(--border);
   color: var(--muted); font-family: 'JetBrains Mono', monospace;
-  font-size: 0.58rem; letter-spacing: 0.12em; text-transform: uppercase;
-  padding: 0.4rem 0.8rem; border-radius: 3px; cursor: pointer;
+  font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+  padding: 0.6rem 1.2rem; border-radius: 3px; cursor: pointer;
   transition: color 0.2s, border-color 0.2s;
   flex-shrink: 0;
 }
