@@ -8,6 +8,41 @@
   <link rel="stylesheet" href="/admin/style.css"/>
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%23080a09'/><rect width='100' height='100' rx='22' fill='none' stroke='%234ead78' stroke-width='6'/><line x1='22' y1='22' x2='78' y2='22' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='78' y1='22' x2='22' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/><line x1='22' y1='78' x2='78' y2='78' stroke='%234ead78' stroke-width='7' stroke-linecap='round'/></svg>"/>
   <script src="/admin/content.js"></script>
+  <style>
+    .terminate-btn {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      padding: 0.7rem 1.4rem; border-radius: 3px; cursor: pointer;
+      background: rgba(125,58,58,0.08);
+      border: 1px solid rgba(192,92,92,0.3);
+      color: #c05c5c;
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .terminate-btn:hover {
+      background: rgba(125,58,58,0.18);
+      border-color: rgba(192,92,92,0.6);
+    }
+    .terminal-overlay {
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(6,8,10,0.95);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.4s ease;
+    }
+    .terminal-overlay.visible {
+      opacity: 1; pointer-events: all;
+    }
+    .terminal-box {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.85rem; line-height: 2.2;
+      color: #4ead78;
+      white-space: pre;
+      text-align: left;
+    }
+    .terminal-box .t-divider { color: #3d5447; }
+    .terminal-box .t-outro   { color: #b8ccbf; }
+    .terminal-box .t-thanks  { color: #e8f2eb; }
+  </style>
 </head>
 <body>
 
@@ -188,9 +223,19 @@
           <div class="card-label">Ideal Resident Profile</div>
           <div class="card-body"><p id="rec-profile"></p></div>
         </div>
+
+        <!-- TERMINATE SESSION -->
+        <div style="margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border);display:flex;justify-content:flex-end;">
+          <button class="terminate-btn" onclick="terminateSession()">Terminate Session</button>
+        </div>
       </div>
 
     </div>
+  </div>
+
+  <!-- TERMINAL OVERLAY -->
+  <div class="terminal-overlay" id="terminal-overlay">
+    <div class="terminal-box" id="terminal-lines"></div>
   </div>
 
   <script>
@@ -336,6 +381,35 @@
       document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
       document.querySelector(`[onclick="switchTab('${name}')"]`).classList.add('active');
       document.getElementById(`tab-${name}`).classList.add('active');
+    }
+
+    // ── TERMINATE SESSION ──
+    function terminateSession() {
+      const overlay = document.getElementById('terminal-overlay');
+      overlay.classList.add('visible');
+
+      const lines = [
+        { text: '> DISCONNECTING FROM ZENITH-INTERNAL...', cls: '',         delay: 0    },
+        { text: '> WIPING LOCAL CACHE...',                  cls: '',         delay: 900  },
+        { text: '> SESSION CLOSED.',                        cls: '',         delay: 1800 },
+        { text: '---------------------------------------',  cls: 't-divider', delay: 2600 },
+        { text: 'You have successfully completed Chapter 1.', cls: 't-outro', delay: 3200 },
+        { text: 'The recruitment of your campus has begun.', cls: 't-outro', delay: 3900 },
+        { text: 'Ethan will be in touch.',                  cls: 't-outro',  delay: 4600 },
+        { text: '',                                         cls: '',         delay: 5200 },
+        { text: '[ Thanks for playing ]',                   cls: 't-thanks', delay: 5400 },
+      ];
+
+      const box = document.getElementById('terminal-lines');
+      box.innerHTML = '';
+      lines.forEach(line => {
+        setTimeout(() => {
+          const el = document.createElement('div');
+          el.textContent = line.text;
+          if (line.cls) el.classList.add(line.cls);
+          box.appendChild(el);
+        }, line.delay);
+      });
     }
 
     // ── STARFIELD ──
