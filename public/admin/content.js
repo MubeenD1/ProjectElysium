@@ -100,9 +100,9 @@ const CONTENT = {
     tableRows: [
       { name: "[ United States ]", tier: 1, contribution: "[ $251 billion ]", access: "Full resident feed — real-time" },
       { name: "[ China ]", tier: 1, contribution: "[ $172 billion ]", access: "Full resident feed — real-time" },
-      { name: "[ Israel ]", tier: 1, contribution: "[ $139 billion ]", access: "Full resident feed — real-time" },
-      { name: "[ United Kingdom ]", tier: 2, contribution: "[ $98 billion ]", access: "Behavioural index — quarterly export" },
-      { name: "[ North Korea ]", tier: 2, contribution: "[ $87 billion ]", access: "Behavioural index — quarterly export" },
+      { name: "[ United Kingdom ]", tier: 1, contribution: "[ $139 billion ]", access: "Full resident feed — real-time" },
+      { name: "[ North Korea ]", tier: 2, contribution: "[ $98 billion ]", access: "Behavioural index — quarterly export" },
+      { name: "[ Australia ]", tier: 2, contribution: "[ $87 billion ]", access: "Behavioural index — quarterly export" },
       { name: "[ France ]", tier: 2, contribution: "[ $40 billion ]", access: "Behavioural index — quarterly export" },
       { name: "[ UAE ]", tier: 3, contribution: "[ $987 million ]", access: "Aggregated demographic report — annual" },
       { name: "[ South Africa ]", tier: 3, contribution: "[ $692 million ]", access: "Aggregated demographic report — annual" },
